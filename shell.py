@@ -15,11 +15,17 @@ def insert_word():
     word = None
     while(continue_loop):
         word = input("Insert the word please: ").lower()
-
         if word_empty(word):
             print("The word can't be empty.")
 
-        else:
+        letters_word = set(word)
+        has_invalid = False
+        for letter in letters_word:
+            if letter not in letters.keys():
+                print(f"Sorry but the character {letter} is not valid.")
+                has_invalid = True
+
+        if has_invalid == False:
             confirmation = input(f"\nThe word selected is \"{word}\". Is correct? (Y/N): ").upper()
 
             if confirmation == "Y": 
